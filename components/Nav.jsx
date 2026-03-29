@@ -27,11 +27,11 @@ const Nav = () => {
     <nav className="flex-between w-full mb-16 pt-3 ">
       <Link href="/" className="flex gap-2 flex-center"><Image 
       src="/assets/images/share-logo.svg"
-      alt = "GiftShare Logo"
+      alt = "Promptopia Logo"
       width={60}
       height={60}
       />
-        <p className="logo_text">GiftShare</p>
+        <p className="logo_text">PromptShare</p>
         </Link>
 
         {/* {desktop navigation} */}
@@ -39,10 +39,10 @@ const Nav = () => {
          {
            session?.user? 
           <div className="flex gap-3 md: gap-5">
-           <Link href={"/create-gift"}
+           <Link href={"/create-prompt"}
            className="black_btn"
            >
-            Add Gift
+            Create Post
            </Link>
 
            <button type="button" onClick={signOut} className="outline_btn">
@@ -97,11 +97,11 @@ const Nav = () => {
                 My profile
                 </Link>
                 <Link
-                href={"/create-gift"}
+                href={"/create-prompt"}
                 className="dropdown_link"
                 onClick={()=>settoggleDropdown(false)}
                 >
-                Add Gift
+                Create Prompt
                 </Link>
                 <button
                 type="button"
