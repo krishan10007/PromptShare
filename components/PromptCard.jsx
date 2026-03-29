@@ -4,7 +4,7 @@ import Image from "next/image";
 import{useSession} from 'next-auth/react';
 import { usePathname, useRouter } from "next/navigation";
 
-const GiftCard = ({post, handleTagClick, handleEdit, handleDelete }) => {
+const PromptCard = ({post, handleTagClick, handleEdit, handleDelete }) => {
 
      const {data:session} = useSession();
      const pathName = usePathname();
@@ -19,8 +19,8 @@ const GiftCard = ({post, handleTagClick, handleEdit, handleDelete }) => {
       router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
     };
     const handleCopy = () =>{
-      setCopied(post.desc);
-      navigator.clipboard.writeText(post.desc);
+      setCopied(post.prompt);
+      navigator.clipboard.writeText(post.prompt);
       console.log(post);
       setTimeout(() => setCopied(""), 3000);
     }
@@ -47,17 +47,14 @@ const GiftCard = ({post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
          <div className="copy_btn" onClick={handleCopy}>
           <Image
-            src={copied === post.desc ? '/assets/icons/tick.svg':'/assets/icons/copy.svg'}
+            src={copied === post.prompt ? '/assets/icons/tick.svg':'/assets/icons/copy.svg'}
             width={12}
             height={12}
           />
          </div>
       </div>
     <p className="my-4 font-satoshi text-sm text-gray-700" style={{wordWrap:"break-word"}}>
-      {post.desc}
-    </p>
-    <p className="my-2 font-satoshi font-bold text-gray-900">
-      ${post.price}
+      {post.prompt}
     </p>
     <p className="font-inter text-sm blue_gradient cursor-pointer"
      onClick={() => handleTagClick && handleTagClick(post.tag)}
@@ -85,4 +82,4 @@ const GiftCard = ({post, handleTagClick, handleEdit, handleDelete }) => {
   )
 }
 
-export default GiftCard
+export default PromptCard

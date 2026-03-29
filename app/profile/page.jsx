@@ -15,13 +15,13 @@ const MyProfile = () => {
   
     const router = useRouter();
     const handleEdit = (post) =>{
-       router.push(`/update-gift?id=${post._id}`);
+       router.push(`/update-prompt?id=${post._id}`);
     }
     const handleDelete = async (post) => {
-         const hasConfirmed = confirm("Are you sure you want to delete this gift?");
+         const hasConfirmed = confirm("Are you sure you want to delete this prompt?");
          if(hasConfirmed){
          try {
-          const response = await fetch(`/api/gift/${post._id.toString()}`,
+          const response = await fetch(`/api/prompt/${post._id.toString()}`,
            {
             method:'DELETE',
            }
