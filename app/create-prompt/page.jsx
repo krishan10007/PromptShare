@@ -5,28 +5,26 @@ import { useRouter } from "next/navigation"
 
 import Form from "@components/Form"
 
-const CreateGift = () => {
+const CreatPrompt = () => {
 
     const {data:session} = useSession();
    const router = useRouter();
     const [submitting, setsubmitting] = useState(false);
 
     const [post, setpost] = useState({
-        desc:'',
-        price:'',
+        prompt:'',
         tag:'',
     });
 
-   const createGift = async (e) => {
+   const createPrompt = async (e) => {
         e.preventDefault();
         setsubmitting(true);
         try{
-           const response = await fetch('/api/gift/new',
+           const response = await fetch('/api/prompt/new',
            {
             method:'POST',
             body:JSON.stringify({
-                desc:post.desc,
-                price:parseFloat(post.price),
+                prompt:post.prompt,
                 userId:session?.user.id,
                 tag:post.tag
 
@@ -50,9 +48,9 @@ const CreateGift = () => {
     post = {post}
     setpost = {setpost}
     submitting = {submitting}
-    handleSubmit = {createGift}
+    handleSubmit = {createPrompt}
     />
   )
 }
 
-export default CreateGift
+export default CreatPrompt

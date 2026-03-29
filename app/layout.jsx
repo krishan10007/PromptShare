@@ -4,8 +4,8 @@ import Nav from '@components/Nav';
 import Provider from '@components/Provider';
 
 export const metadata = {
-    title : "GiftShare",
-    description: "Explore & Share Unique Customized Gifts"
+    title : "PromptShare",
+    description: "Explore & Share AI Prompts"
 }
 
 const RootLayout = ({children}) => {

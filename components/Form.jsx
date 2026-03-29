@@ -6,39 +6,27 @@ const Form = ({ type,post ,setpost,submitting ,handleSubmit}) => {
   
   return (
     <section className='w-full max-w-full flex-start flex-col'>
-      <h1 className='head_text text-left'>{type} Gift</h1>
+      <h1 className='head_text text-left'>{type} Post</h1>
 
-      <p className='desc text-left max-w-md'>{type} and share amazing gifts with the world</p>
+      <p className='desc text-left max-w-md'>{type} and share amazing prompts with the world</p>
       <form onSubmit={handleSubmit}
       className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
       >
         <label >
-          <span className = "font-satoshi font-semibold text-base text-gray-700">Gift Description</span>
+          <span className = "font-satoshi font-semibold text-base text-gray-700">Your AI Prompt</span>
         <textarea 
-        value={post.desc}
-        onChange={(e) => setpost({...post,desc:e.target.value})}
-        placeholder='Write your gift description here......'
+        value={post.prompt}
+        onChange={(e) => setpost({...post,prompt:e.target.value})}
+        placeholder='Write your prompt here......'
         required
         className='form_textarea'
-        />
-      </label>
-
-        <label >
-          <span className = "font-satoshi font-semibold text-base text-gray-700">Price ($)</span>
-        <input
-        type="number"
-        value={post.price}
-        onChange={(e) => setpost({...post,price:e.target.value})}
-        placeholder='e.g., 25.99'
-        required
-        className='form_input'
         />
       </label>
 
       <label >
           <span className = "font-satoshi font-semibold text-base text-gray-700">
             Tag {``}
-          <span>(#birthday #anniversary #handmade etc.)</span>
+          <span>(#developement #educational etc.)</span>
           </span>
         <input 
         value={post.tag}

@@ -5,47 +5,44 @@ import { useRouter, useSearchParams } from "next/navigation"
 
 import Form from "@components/Form"
 
-const EditGift = () => {
+const EditPrompt = () => {
 
   //  const {data:session} = useSession();
    const router = useRouter();
    const searchParams = useSearchParams();
-   const giftId = searchParams.get('id');
+   const promptId = searchParams.get('id');
     const [submitting, setsubmitting] = useState(false);
 
     const [post, setpost] = useState({
-        desc:'',
-        price:'',
+        prompt:'',
         tag:'',
     });
 
     useEffect(()=>{
-       const getGiftDetails = async ()=>{
-           const response = await fetch(`/api/gift/${giftId}`);
+       const getPromptDetails = async ()=>{
+           const response = await fetch(`/api/prompt/${promptId}`);
 
            const data = await response.json();
 
            setpost({
-            desc:data.desc,
-            price:data.price,
+            prompt:data.prompt,
             tag:data.tag,
            })
        }
-       if(giftId) getGiftDetails();
-    },[giftId])
+       if(promptId) getPromptDetails();
+    },[promptId])
 
-   const updateGift = async (e) => {
+   const updatePrompt = async (e) => {
         e.preventDefault();
         setsubmitting(true);
 
-        if(!giftId) return alert('Gift id not found')
+        if(!promptId) return alert('Prompt id not found')
         try{
-           const response = await fetch(`/api/gift/${giftId}`,
+           const response = await fetch(`/api/prompt/${promptId}`,
            {
             method:'PATCH',
             body:JSON.stringify({
-                desc:post.desc,
-                price:parseFloat(post.price),
+                prompt:post.prompt,
                 tag:post.tag
 
             })
@@ -70,9 +67,9 @@ const EditGift = () => {
     post = {post}
     setpost = {setpost}
     submitting = {submitting}
-    handleSubmit = {updateGift}
+    handleSubmit = {updatePrompt}
     />
   )
 }
 
-export default EditGift
+export default EditPrompt
