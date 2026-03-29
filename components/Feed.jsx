@@ -1,15 +1,15 @@
 'use client'
 
 import { useState,useEffect } from "react";
-import PromptCard from "./PromptCard";
+import GiftCard from "./GiftCard";
 import LoadingSpinner from "./LoadingSpinner";
 
-const PromptCardList = ({data,handleTagClick}) => {
+const GiftCardList = ({data,handleTagClick}) => {
 
   return (
     <div className="mt-16 prompt_layout">
      {data.map((post)=>(
-      <PromptCard
+      <GiftCard
       key = {post._id}
       post = {post}
       handleTagClick = {handleTagClick}
@@ -35,7 +35,7 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts= async () => {
-      const response = await fetch('/api/prompt');
+      const response = await fetch('/api/gift');
       const data = await response.json();
 
       setPosts(data);
@@ -49,7 +49,7 @@ const Feed = () => {
   useEffect(()=>{
 
     const filteredPosts = posts.filter((post) => {
-      return post.prompt.toLowerCase().includes(searchText.toLowerCase()) ||
+      return post.desc.toLowerCase().includes(searchText.toLowerCase()) ||
         post.tag.toLowerCase().includes(searchText.toLowerCase())|| post.creator.username.toLowerCase().includes(searchText.toLowerCase());
     });
     setFilteredPosts(filteredPosts);
@@ -74,7 +74,7 @@ const Feed = () => {
         />
        </form>
        
-       {isLoading ? <LoadingSpinner/> : <PromptCardList data = {filteredPosts} handleTagClick = {handleTagClick} />}
+       {isLoading ? <LoadingSpinner/> : <GiftCardList data = {filteredPosts} handleTagClick = {handleTagClick} />}
     </section>
   )
 }

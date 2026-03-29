@@ -2,15 +2,19 @@
 
 import mongoose, {Schema,model,models} from 'mongoose';
 
-const PromptSchema = new Schema({
+const GiftSchema = new Schema({
     creator:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',
     }
     ,
-    prompt:{
+    desc:{
         type:String,
-        required:[true,'prompt is required']
+        required:[true,'description is required']
+    },
+    price:{
+        type:Number,
+        required:[true,'price is required']
     },
     tag:{
         type:String,
@@ -19,6 +23,6 @@ const PromptSchema = new Schema({
 
 });
 
-const Prompt = models.Prompt || model("Prompt",PromptSchema);
+const Gift = models.Gift || model("Gift",GiftSchema);
 
-export default Prompt;
+export default Gift;
