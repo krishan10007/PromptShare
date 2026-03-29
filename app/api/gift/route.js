@@ -1,15 +1,15 @@
 import { connectToDB } from "@utils/database";
-import Prompt from "@models/prompt";
+import Gift from "@models/gift";
 import User from "@models/user";
 
 export const GET  = async (request) =>{
     try {
         await connectToDB();
-        const prompt = await Prompt.find().populate({
+        const gift = await Gift.find().populate({
           path: "creator"
         });
 
-        const response = new Response(JSON.stringify(prompt), {
+        const response = new Response(JSON.stringify(gift), {
           status: 200,
         });
 
@@ -26,6 +26,6 @@ export const GET  = async (request) =>{
 
 
     } catch (error) {
-         return new Response("Failed to fetch all prompts",{status:500});
+         return new Response("Failed to fetch all gifts",{status:500});
     }
 }

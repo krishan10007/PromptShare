@@ -8,15 +8,13 @@ const Home   = () => {
       Discover & Share 
       <br className="max-md:hidden"/>
     <span className="bluee_gradient text-center" >
-      AI - Powered Prompts
+      Unique Customized Gifts
       </span>
       </h1>
       <p className="desc text-center">
-      Lorem ipsum dolor sit amet,
-       consectetur adipiscing elit, 
-       sed do eiusmod tempor incididunt 
-       ut labore et dolore magna aliqua.  
-       
+      Explore our collection of hand-crafted and uniquely customized gifts,
+      perfect for every occasion. Share your own creations and find inspiration
+      from others!
       </p>
 
       
